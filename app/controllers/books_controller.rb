@@ -6,8 +6,8 @@ class BooksController < ApplicationController
   end
 
   def create
-    binding.pry
     book = Book.create(book_params)
+    binding.pry
     redirect_to book_path(book) 
   end
 
@@ -16,6 +16,6 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:title, :author, :description, :genre_id)
+    params.require(:book).permit(:title, :author, :description, :genre_id, genre_attributes: [:name])
   end
 end

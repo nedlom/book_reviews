@@ -1,0 +1,7 @@
+<%= @genre.name %>
+
+<ul>
+  <% @genre.books.each do |b| %>
+    <li><%= b.title %> by <%= b.author %></li>
+  <% end %>
+</ul>
