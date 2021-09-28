@@ -2,9 +2,11 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
+    @book.build_genre
   end
 
   def create
+    binding.pry
     book = Book.create(book_params)
     redirect_to book_path(book) 
   end

@@ -17,20 +17,20 @@
 
   <br>
   <br>
-
+  
+  <p>Select a currently existing Genre</p>
   <%= f.label :genre_id %>
   <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "Select Genre" %>
 
   <br>
   <br>
 
-  <%= f.fields_for :genre, @book.build_genre do |genre_field| %>
+  <p>Or create a new Genre</p>
+  <%= f.fields_for :genre do |genre_field| %>
     <%= genre_field.label :name %>
     <%= genre_field.text_field :name %>
   <% end %>
-
-  <div>
-    <%= f.submit %>
-  </div>
+  
+  <%= f.submit %>
 
 <% end %>
