@@ -1,12 +1,11 @@
 <h1>Sign Up</h1>
 
-<h2> Create Book </h2>
-<% if @book.errors.any? %>
+<% if @user.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this book from being saved:</h2>
 
     <ul>
-      <% @book.errors.each do |error| %>
+      <% @user.errors.each do |error| %>
         <li><%= error.full_message %></li>
       <% end %>
     </ul>
@@ -18,12 +17,18 @@
   <%= f.label :username %>
   <%= f.text_field :username %>
 
+  <br><br>
+
   <%= f.label :email %>
   <%= f.email_field :email %>
-  
+
+  <br><br>
+
   <%= f.label :password %>
   <%= f.password_field :password %>
-  
+
+  <br><br>
+
   <%= f.submit "Sign Up" %>
 
 <% end %>

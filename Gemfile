@@ -22,9 +22,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'omniauth'
-gem 'dotenv-rails'
-gem 'omniauth-google-oauth2'.
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -33,6 +31,9 @@ gem 'omniauth-google-oauth2'.
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
+  gem 'omniauth'
+  gem 'dotenv-rails'
+  gem 'omniauth-google-oauth2'
   gem 'pry'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
