@@ -12,7 +12,9 @@
 
 
 <%# if/then for this %>
-<h2>Writing Review For: <%= @book.title %></h2>
+<% if @book %>
+  <h2>Writing Review For: <%= @book.title %></h2>
+<% end %>
 
 <%= form_for @review do |f| %>
 
@@ -23,7 +25,12 @@
   <%= f.number_field :rating, min: 0, max: 5 %>
 
   <%# change to dropdown if no id %>
-  <%= f.hidden_field :book_id %>
+
+  <% if @book %>
+    <%= f.hidden_field :book_id %>
+  <% else %>
+    <%= f.collection_select :book_id, Book.all, :id, :title_and_author %>
+  <% end %>
 
   <%= f.submit %>
 <% end %>
