@@ -1,3 +1,19 @@
+<% if @review.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+    <ul>
+      <% @review.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<%# if/then for this %>
+<h2>Writing Review For: <%= @book.title %></h2>
+
 <%= form_for @review do |f| %>
 
   <%= f.label :content %>
@@ -6,6 +22,7 @@
   <%= f.label :rating %>
   <%= f.number_field :rating, min: 0, max: 5 %>
 
+  <%# change to dropdown if no id %>
   <%= f.hidden_field :book_id %>
 
   <%= f.submit %>

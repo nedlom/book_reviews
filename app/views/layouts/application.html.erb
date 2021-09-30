@@ -10,10 +10,9 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <%= link_to "Home", root_path %> 
   <%= link_to "Log Out", logout_path, method: :delete %>
-  <br>
   <%= link_to "Add Book", new_book_path %>
-  <br> 
   <%= link_to "View Genres", genres_path %>
 
   <body>

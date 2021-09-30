@@ -1,6 +1,13 @@
 class ReviewsController < ApplicationController
 
   def index 
+    binding.pry
+    # if nested has params[:book_id] and book exists
+    if params[:book_id] && @book = Book.find_by(id: params[:book_id])
+      @reviews = @book.reviews
+    else
+      @reviews = Review.all
+    end
   end
 
   def new
@@ -13,9 +20,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-
-    binding.pry
-    @review = Review.new(review_params)
+    @review = current_user.reviews.build(review_params)
     if @review.save
       redirect_to review_path(@review)
     else
