@@ -1,3 +1,11 @@
 <h2> Welcome <%= @user.username %>! </h2>
 
-<h3> Here are your reviews: </h3>
+<h3> Here are the books you have reviewed: </h3>
+
+<ul>
+  <% @user.books.each do |b| %>
+    <li>
+      <%= b.title %>
+    </li>
+  <% end %>
+</ul>

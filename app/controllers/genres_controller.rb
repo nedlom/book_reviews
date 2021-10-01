@@ -2,7 +2,7 @@ class GenresController < ApplicationController
   before_action :redirect_if_not_logged_in
 
   def index
-    @genres = Genre.all
+    @genres = Genre.alpha
   end
 
   def show
