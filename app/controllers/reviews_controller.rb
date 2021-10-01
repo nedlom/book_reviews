@@ -12,8 +12,6 @@ class ReviewsController < ApplicationController
 
   def new
     # checking for nested route
-
-  
     @book = Book.find_by(id: params[:book_id])
     if !@book.nil?
       @review = @book.reviews.build
