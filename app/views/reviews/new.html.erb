@@ -1,3 +1,5 @@
+<h2> Write a review </h2>
+
 <% if @review.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
@@ -10,26 +12,22 @@
   </div>
 <% end %>
 
-
-<%# if/then for this %>
 <% if @book %>
   <h2> Reviewing: <%= @book.title_and_author %></h2>
 <% end %>
 
-User: <%= current_user.username %>
-
 <%= form_for @review do |f| %>
-
-  <br> 
 
   <div>
     <% if @book %>
       <%= f.hidden_field :book_id %>
     <% else %>
-      <%= f.label "Select A Book To Review" %> 
+      <%= f.label "Select book to review" %> 
       <%= f.collection_select :book_id, Book.all, :id, :title_and_author, include_blank: "Select A Book" %>
     <% end %>
   </div>
+
+  <br>
 
   <div>
     <%= f.label :review %> <br>
