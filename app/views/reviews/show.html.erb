@@ -1,19 +1,15 @@
 
-<h3> <%= @review.book.title %> by <%= @review.book.author %> </h3>
+<h4> Review: <%= @review.book.title %> by <%= @review.book.author %> </h4>
 
-<p>
-  Reviewer: <%= @review.user.username %>
-</p> 
-
-<br>
+User: <%= @review.user.username %>
 
 <div>
-  <%= @review.content %>
+  Content: <%= @review.content %>
 </div>
 
 <br>
 
 <div>
-  <%= @review.rating %>
+  Rating: <%= @review.rating %>
 </div>
 

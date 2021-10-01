@@ -10,8 +10,8 @@ class Review < ApplicationRecord
   scope :newest, -> {order(created_at: :desc)}
   # scope :order, ->
 
-  def self.for_book(book)
-    where(book_id: book).order(ratings)
+  def self.user_reviews(user)
+    where(user: user)
   end
 
 end

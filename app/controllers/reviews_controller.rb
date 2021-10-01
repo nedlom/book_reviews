@@ -38,10 +38,33 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @review = Review.find_by(id: params[:id])
+    
+  end
+
+  def update
+
+    @review = Review.find_by(id: params[:id])
+    if @review.update(review_params)
+      redirect_to review_path(@review)
+    else
+      render :edit
+    end 
+  end
+
+  def destroy
+  end
+
   private
 
   def review_params
     params.require(:review).permit(:content, :rating, :book_id)
   end
+
+  def edit_access?(review)
+    review.user == current_user
+  end
+
 
 end

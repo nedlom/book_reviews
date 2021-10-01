@@ -1,0 +1,21 @@
+<h3> Editing <%= @review.book.title %> </h3>
+
+<%= form_for @review do |f| %>
+
+  <div>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+
+  <br> 
+
+  <div>
+    <%= f.label :rating %>
+    <%= f.number_field :rating, min: 0, max: 5 %>
+  </div>
+
+  <br>
+
+  <%= f.submit %>
+
+<% end %>

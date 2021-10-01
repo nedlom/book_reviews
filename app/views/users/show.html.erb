@@ -3,9 +3,10 @@
 <h3> Here are the books you have reviewed: </h3>
 
 <ul>
-  <% @user.books.each do |b| %>
+  <% @user.reviews.each do |r| %>
     <li>
-      <%= b.title %>
+      <%= r.book.title %> by <%= r.book.author %> <br>
+      <%= link_to "See your review", review_path(r) %> <br>
     </li>
   <% end %>
 </ul>

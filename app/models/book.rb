@@ -8,8 +8,6 @@ class Book < ApplicationRecord
   validates :description, presence: true
   validate :not_a_duplicate
 
-  scope :high_ratings, -> {h()}
-
   
   # if there is already a book with that title && author, throw an error
   def not_a_duplicate
