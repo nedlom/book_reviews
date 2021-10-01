@@ -39,7 +39,7 @@ class Book < ApplicationRecord
   end
 
   def title_and_author
-    "#{self.title} - #{self.author}"
+    "#{self.title} by #{self.author}"
   end
 
 end

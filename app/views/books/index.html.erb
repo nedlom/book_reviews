@@ -3,12 +3,15 @@
 <% if @books.empty? %>
   <h3> There are currently no books in the index. </h3>
 <% else %>
-  <% @books.each do |b| %>
-    <p>
-      <h3><%= link_to b.title, book_path(b) %> - <%= b.author %></h3>
-      <%= link_to "Write a review", new_book_review_path(b) %> - 
-      <%= link_to "See all reviews for this book", book_reviews_path(b) %>
-    </p>
-  <% end %>
+  <ul>
+    <% @books.each do |b| %>
+      <li>
+        <h3> <%= link_to b.title_and_author, book_path(b) %> </h3>
+        <%= link_to "Write a review", new_book_review_path(b) %> - 
+        <%= link_to "See all reviews for this book", book_reviews_path(b) %>
+      </li>
+      <br>
+    <% end %>
+  </ul>
 <% end %>
 
