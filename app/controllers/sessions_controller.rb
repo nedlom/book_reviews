@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    binding.pry
 
     if params[:provider] == 'github'
       @user = User.create_by_github_omniauth(auth)
@@ -21,9 +20,8 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to user_path(@user)
       else
-        binding.pry
-        # add flash
-        redirect_to login_path, alert: "Login info incorrect. Please try again"
+        flash[:alert] = "Login info incorrect. Please try again"
+        redirect_to login_path
       end
     end
   end

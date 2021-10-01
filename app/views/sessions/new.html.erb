@@ -1,5 +1,10 @@
 <h1>Login</h1>
 
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+  <br>
+<% end %>
+
 <%# using :user b/c not creating new user %>
 <%# this is a form for user model & fields are attr of model %>
 <%# form_for User.new, url: login_path do |f| %>
@@ -17,3 +22,7 @@
   <%= f.submit "Login" %>
 
 <% end %>
+
+<br>
+
+<%= link_to "Go Back", root_path %>

@@ -8,10 +8,9 @@ class Review < ApplicationRecord
   validates :book, uniqueness: { scope: :user, message: "You have already reviewed this book"  }
 
   scope :newest, -> {order(created_at: :desc)}
-  # scope :order, ->
 
-  def self.user_reviews(user)
-    where(user: user)
+  def self.ordered_reviews_for_a_book(book)
+    where(book: book).order(rating: :desc)
   end
 
 end

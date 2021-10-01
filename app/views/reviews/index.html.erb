@@ -1,4 +1,4 @@
-<h2>Review Index</h2>
+<%= display_header_for_index %>
 
 <% if @reviews.empty? %>
   <h3> There are currently no reviews </h3>
@@ -7,7 +7,8 @@
     <% @reviews.each do |r| %>
       <li>
         <%= r.book.title %> by <%= r.book.author %> <br>
-        Reviewed by: <%= r.user.username %> on <%= r.created_at.strftime("%A, %b %e %Y, at %l:%M %p") %><br>
+        Reviewed by: <%= r.user.username %> on <%= created_at(r) %> <br>
+        Rating: <%= r.rating %> <br>
         <%= link_to "Read Review", review_path(r) %>
       </li>
       <br>

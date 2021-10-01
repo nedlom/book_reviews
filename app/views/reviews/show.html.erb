@@ -13,3 +13,7 @@ User: <%= @review.user.username %>
   Rating: <%= @review.rating %>
 </div>
 
+<br>
+
+<%= link_to "Edit Review", edit_review_path(@review) if current_user == @review.user %>
+

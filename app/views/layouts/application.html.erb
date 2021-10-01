@@ -12,10 +12,10 @@
 
   <% if current_user %>
     <%= link_to "Home", user_path(current_user) %> |
-    <%= link_to "Books Index", books_path %> |
+    <%= link_to "Book Index", books_path %> |
     <%= link_to "Add Book To Index", new_book_path %> |
-    <%= link_to "Reviews Index", reviews_path %> |
-    <%= link_to "Add A Review", new_review_path %> |
+    <%= link_to "Review Index", reviews_path %> |
+    <%= link_to "Add Review To Index", new_review_path %> |
     <%= link_to "View Genres", genres_path %> |
     <%= link_to "Log Out", logout_path, method: :delete %> 
   <% end %> 

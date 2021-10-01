@@ -1,4 +1,6 @@
-<h3> Editing <%= @review.book.title %> </h3>
+<h3> Editing <%= current_user.username %>'s review of <%= @review.book.title_and_author%> </h3>
+
+<%= render partial: 'layouts/errors', locals: {object: @review} %>
 
 <%= form_for @review do |f| %>
 

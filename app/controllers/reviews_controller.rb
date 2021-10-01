@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   def index 
     # check if nested route has params[:book_id] and if the book exists
     if params[:book_id] && @book = Book.find_by(id: params[:book_id])
-      @reviews = @book.reviews
+      @reviews = Review.ordered_reviews_for_a_book(@book)
     else
       @reviews = Review.newest
     end
@@ -39,7 +39,14 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+
     @review = Review.find_by(id: params[:id])
+
+    if !edit_access?(@review)
+      flash[:alert] = "You can only edit reviews that you created"
+      redirect_to user_path(current_user)
+    end
+
   end
 
   def update
