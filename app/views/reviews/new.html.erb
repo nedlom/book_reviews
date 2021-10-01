@@ -19,13 +19,13 @@
 <%= form_for @review do |f| %>
 
   <br> 
-  
+
   <div>
     <% if @book %>
       <%= f.hidden_field :book_id %>
     <% else %>
       <%= f.label "Select A Book To Review" %> 
-      <%= f.collection_select :book_id, Book.all, :id, :title_and_author %>
+      <%= f.collection_select :book_id, Book.all, :id, :title_and_author, include_blank: "Select A Book" %>
     <% end %>
   </div>
   
