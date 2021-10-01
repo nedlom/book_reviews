@@ -1,13 +1,10 @@
-<h2> Title: <%= @book.title %> </h2>
+<p>
+  Title: <%= @book.title %> 
+  Author: <%= @book.author %> 
+</p>
 
-Author: <%= @book.author %>
-
-<br>
-<br>
-
-Description: <%= @book.description %>
-
-<br>
-<br>
+<p>
+  <%= @book.description %>
+</p> 
 
 Genre: <%= @book.genre.name %>

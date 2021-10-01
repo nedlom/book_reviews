@@ -11,15 +11,22 @@
   </head>
 
   <% if current_user %>
-    <%= link_to "Home", root_path %> 
-    <%= link_to "Log Out", logout_path, method: :delete %>
-    <%= link_to "Add Book", new_book_path %>
-    <%= link_to "View Genres", genres_path %>
-    <br>
-    <%= "Current User: #{current_user.username}" %>
+    <%= link_to "Home", user_path(current_user) %> |
+    <%= link_to "Books Index", books_path %> |
+    <%= link_to "Add Book To Index", new_book_path %> |
+    
+    
+    <%= link_to "View Genres", genres_path %> |
+    <%= link_to "Log Out", logout_path, method: :delete %> |
   <% end %> 
 
   <body>
+  
+    <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+    <% end %>
+
     <%= yield %>
+
   </body>
 </html>

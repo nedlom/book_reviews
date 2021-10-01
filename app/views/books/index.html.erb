@@ -1,10 +1,13 @@
 <h1> Books Index Page </h1>
 
-<% @books.each do |b| %>
-  <p>
-    <h3><%= b.title %> - <%= b.author %></h3>
-    <%= link_to "Write a review", new_book_review_path(b) %>
-
-  </p>
+<% if @books.empty? %>
+  <h3> There are currently no books in the index. </h3>
+<% else %>
+  <% @books.each do |b| %>
+    <p>
+      <h3><%= b.title %> - <%= b.author %></h3>
+      <%= link_to "Write a review", new_book_review_path(b) %>
+    </p>
+  <% end %>
 <% end %>
 

@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :redirect_if_not_logged_in
 
   def index
     @books = Book.all
@@ -10,11 +11,14 @@ class BooksController < ApplicationController
   end
 
   def create
-    binding.pry
+  
     @book = Book.new(book_params)
+
     if @book.save
       redirect_to book_path(@book)
     else
+      # need this to render address field
+      @book.build_genre
       render new_book_path
     end
   end
