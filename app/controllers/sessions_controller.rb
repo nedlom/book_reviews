@@ -14,13 +14,14 @@ class SessionsController < ApplicationController
       redirect_to user_path(@user)
     else
 
-      @user = User.find_by(username: params[:user][:username])
-
+      @user = User.find_by(email: params[:user][:email])
+      binding.pry
+      
       if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
         redirect_to user_path(@user)
       else
-        flash[:alert] = "Login info incorrect. Please try again"
+        flash[:alert] = "Login failed. Email or password incorrect. Please try again"
         redirect_to login_path
       end
     end

@@ -1,34 +1,22 @@
 <h1>Sign Up</h1>
 
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this book from being saved:</h2>
-
-    <ul>
-      <% @user.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render partial: 'layouts/errors', locals: {object: @user} %>
 
 <%= form_for @user do |f|%>
 
   <%= f.label :username %>
   <%= f.text_field :username %>
 
-  <br><br>
-
   <%= f.label :email %>
   <%= f.email_field :email %>
-
-  <br><br>
 
   <%= f.label :password %>
   <%= f.password_field :password %>
 
-  <br><br>
-
   <%= f.submit "Sign Up" %>
 
 <% end %>
+
+<br>
+
+<%= link_to "Go Back", root_path %>
