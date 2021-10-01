@@ -1,6 +1,10 @@
-<h2>Reviews</h2>
+<h2>Review Index</h2>
 
-<% @reviews.each do |r| %>
-  <%= r.content %>
-  <br>
+<% if @reviews.empty? %>
+  <h3> There are currently no reviews </h3>
+<% else %>
+  <% @reviews.each do |r| %>
+    <%= r.content %>
+    <br>
+  <% end %>
 <% end %>

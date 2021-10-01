@@ -2,8 +2,7 @@ class ReviewsController < ApplicationController
   before_action :redirect_if_not_logged_in
 
   def index 
-    binding.pry
-    # if nested has params[:book_id] and book exists
+    # check if nested route has params[:book_id] and if the book exists
     if params[:book_id] && @book = Book.find_by(id: params[:book_id])
       @reviews = @book.reviews
     else
@@ -22,6 +21,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = current_user.reviews.build(review_params)
+    
     if @review.save
       redirect_to review_path(@review)
     else

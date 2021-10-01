@@ -18,19 +18,35 @@
 
 <%= form_for @review do |f| %>
 
-  <%= f.label :content %>
-  <%= f.text_area :content %>
+  <br> 
+  
+  <div>
+    <% if @book %>
+      <%= f.hidden_field :book_id %>
+    <% else %>
+      <%= f.label "Select A Book To Review" %> 
+      <%= f.collection_select :book_id, Book.all, :id, :title_and_author %>
+    <% end %>
+  </div>
+  
+  <br>
 
-  <%= f.label :rating %>
-  <%= f.number_field :rating, min: 0, max: 5 %>
+  <div>
+    <%= f.label :review %>
+    <%= f.text_area :content %>
+  </div>
+
+  <br> 
+
+  <div>
+    <%= f.label :rating %>
+    <%= f.number_field :rating, min: 0, max: 5 %>
+  </div>
+
+  <br>
 
   <%# change to dropdown if no id %>
 
-  <% if @book %>
-    <%= f.hidden_field :book_id %>
-  <% else %>
-    <%= f.collection_select :book_id, Book.all, :id, :title_and_author %>
-  <% end %>
-
   <%= f.submit %>
+
 <% end %>
