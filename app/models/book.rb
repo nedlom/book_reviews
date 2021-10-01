@@ -8,9 +8,8 @@ class Book < ApplicationRecord
   validates :description, presence: true
   validate :not_a_duplicate
 
-
+  # if there is already a book with that title && author, throw an error
   def not_a_duplicate
-    # if there is already a book with that title && author, throw an error
     book = Book.find_by(title: title, author: author)
     if !!book && book != self
       errors.add(:book, 'is already in the book index.')
