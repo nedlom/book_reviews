@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  #root "welcome#home"
   root "sessions#welcome"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
@@ -7,7 +8,11 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
   delete "/logout", to: "sessions#destroy"
 
-  get '/auth/:provider/callback' => 'sessions#omniauth'
+  # get '/auth/:provider/callback' => 'sessions#omniauth'
+
+  #match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+
+  get '/auth/:provider/callback' => 'sessions#create'
 
   resources :users
   resources :genres
