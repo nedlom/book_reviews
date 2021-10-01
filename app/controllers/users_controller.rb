@@ -19,7 +19,6 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
 
     # prevent error screen for no user
-
     if @user.nil?
       redirect_to :root
     end

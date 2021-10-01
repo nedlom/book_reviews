@@ -13,7 +13,7 @@
 
 <%# if/then for this %>
 <% if @book %>
-  <h2>Writing Review For: <%= @book.title %></h2>
+  <h2><%= current_user.username %> Writing review for: <%= @book.title %></h2>
 <% end %>
 
 <%= form_for @review do |f| %>
