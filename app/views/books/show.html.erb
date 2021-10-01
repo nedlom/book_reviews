@@ -1,12 +1,20 @@
 
 <h3> <%= @book.title %> by <%= @book.author %> </h3>
 
-<p>
-  Description: <br> <%= @book.description %>
-</p> 
+<div>
+  <%= @book.description %>  
+</div>
 
-Genre: <%= @book.genre.name %>
+<br>
 
-Reviews: <% @book.reviews.each do |r| %>
-            <%= r.content %>
-          <% end %>
+<div>
+  Genre: <%= @book.genre.name %>
+</div>
+
+<br>
+
+<div>
+  <%= link_to "Write a review for this book", new_book_review_path(@book) %>
+  Or 
+  <%= link_to "See reviews for this book", book_reviews_path(@book) %>
+</div>

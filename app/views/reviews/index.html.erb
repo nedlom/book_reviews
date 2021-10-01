@@ -8,7 +8,7 @@
       <li>
         <%= r.book.title %> by <%= r.book.author %> <br>
         Reviewed by: <%= r.user.username %> on <%= r.created_at.strftime("%A, %b %e %Y, at %l:%M %p") %><br>
-        <%= link_to "See Review", review_path(r) %>
+        <%= link_to "Read Review", review_path(r) %>
       </li>
       <br>
     <% end %>

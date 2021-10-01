@@ -5,7 +5,7 @@
 <ul>
   <% @user.reviews.each do |r| %>
     <li>
-      <%= r.book.title %> by <%= r.book.author %> <br>
+      <%= link_to r.book.title_and_author, book_path(r.book) %> - 
       <%= link_to "See your review", review_path(r) %> <br>
     </li>
   <% end %>
