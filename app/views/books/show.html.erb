@@ -1,12 +1,12 @@
 
+<h3> <%= @book.title %> by <%= @book.author %> </h3>
 
 <p>
-  Title: <%= @book.title %> 
-  Author: <%= @book.author %> 
-</p>
-
-<p>
-  <%= @book.description %>
+  Description: <br> <%= @book.description %>
 </p> 
 
 Genre: <%= @book.genre.name %>
+
+Reviews: <% @book.reviews.each do |r| %>
+            <%= r.content %>
+          <% end %>
