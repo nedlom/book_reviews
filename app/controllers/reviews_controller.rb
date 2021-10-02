@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = current_user.reviews.build(review_params)
-    
+   
     if @review.save
       redirect_to review_path(@review)
     else
@@ -39,7 +39,6 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-
     @review = Review.find_by(id: params[:id])
 
     if !edit_access?(@review)

@@ -13,4 +13,21 @@ module ReviewsHelper
     end
   end
 
+  def display_header_for_new
+    if params[:book_id]
+      book = Book.find_by(id: params[:book_id]).title_and_author
+      content_tag(:h2, "Reviewing: #{book}")
+    else
+      content_tag(:h2, "Write A Review")
+    end
+  end
+
+  def hidden_book
+    if params[:book_id]
+      hidden_field(:review, :book_id)
+    else
+      collection_select(:review, :book_id, Book.all, :id, :title_and_author, include_blank: "Select A Book To Review")
+    end
+  end
+
 end

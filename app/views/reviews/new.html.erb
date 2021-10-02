@@ -1,25 +1,12 @@
-<h2> Write a review </h2>
 
-<% if @book %>
-  <h2> Reviewing: <%= @book.title_and_author %></h2>
-<% end %>
+<%= display_header_for_new %>
 
 <%= render partial: 'layouts/errors', locals: {object: @review} %>
 
-
-
 <%= form_for @review do |f| %>
-
-  <div>
-    <% if @book %>
-      <%= f.hidden_field :book_id %>
-    <% else %>
-      <%= f.label "Select book to review" %> 
-      <%= f.collection_select :book_id, Book.all, :id, :title_and_author, include_blank: "Select A Book" %>
-    <% end %>
-  </div>
-
-  <br>
+  <%= hidden_book %>
+  
+  <br> 
 
   <div>
     <%= f.label :review %> <br>
@@ -33,9 +20,7 @@
     <%= f.number_field :rating, min: 0, max: 5 %>
   </div>
 
-  <br>
-
-  <%# change to dropdown if no id %>
+  <br> 
 
   <%= f.submit %>
 
