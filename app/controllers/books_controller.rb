@@ -15,7 +15,6 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to book_path(@book)
     else
-      # need this to render address field
       @book.build_genre
       render :new
     end

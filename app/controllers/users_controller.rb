@@ -18,9 +18,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
 
-    # prevent error screen for no user
-    if @user.nil?
-      redirect_to :root
+    if @user.nil? || @user != current_user
+      redirect_to user_path(current_user)
     end
     
   end
