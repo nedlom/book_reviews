@@ -67,5 +67,4 @@ class ReviewsController < ApplicationController
     review.user == current_user
   end
 
-
 end
