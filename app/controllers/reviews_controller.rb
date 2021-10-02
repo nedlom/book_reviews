@@ -41,7 +41,7 @@ class ReviewsController < ApplicationController
   def edit
     @review = Review.find_by(id: params[:id])
 
-    if !edit_access?(@review)
+    if !edit_permission?(@review)
       flash[:alert] = "You can only edit reviews that you created"
       redirect_to user_path(current_user)
     end
@@ -63,7 +63,7 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:content, :rating, :book_id)
   end
 
-  def edit_access?(review)
+  def edit_permission?(review)
     review.user == current_user
   end
 
