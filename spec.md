@@ -22,11 +22,14 @@ Items through Ingredients)
 - [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
   *validation for User, Book, and Review 
 
-- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)\
+  *three scope methods included: 2 in Review class and 1 in Genre class 
 
 - [x] Include signup (how e.g. Devise)
 - [x] Include login (how e.g. Devise)
 - [x] Include logout (how e.g. Devise)
+  *traditional login using has_secure_password and BCrypt
+
 - [x] Include third party signup/login (how e.g. Devise/OmniAuth)
   *OmniAuth github login
   
