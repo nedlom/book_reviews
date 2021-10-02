@@ -2,10 +2,6 @@
 
 <p><%= flash[:error] %></p>
 
-<%# using :user b/c not creating new user %>
-<%# this is a form for user model & fields are attr of model %>
-<%# form_for User.new, url: login_path do |f| %>
-
 <%= form_for :user do |f|%>
   <%= f.label :email %>
   <%= f.email_field :email %>
