@@ -1,19 +1,16 @@
 
-<h4> Review: <%= @review.book.title %> by <%= @review.book.author %> </h4>
+<h2> Book review: <%= @review.book.title %> by <%= @review.book.author %> </h2>
 
-User: <%= @review.user.username %>
+Reviewed by user: <%= @review.user.username %>
 
-<div>
-  Content: <%= @review.content %>
-</div>
+<p>
+  <%= @review.content %>
+</p>
 
-<br>
-
-<div>
-  Rating: <%= @review.rating %>
-</div>
+<b> Rating: </b> <%= @review.rating %> / 5
 
 <br>
+<br> 
 
 <%= link_to "Edit Review", edit_review_path(@review) if current_user == @review.user %>
 

@@ -1,10 +1,6 @@
-<h2> Welcome <%= @user.username %>! </h2>
+<h2> Welcome <%= @user.username %> </h2>
 
-<% flash.each do |name, msg| -%>
-  <%= content_tag :div, msg, class: name %>
-<% end %>
-
-<h3> Here are the books you have reviewed: </h3>
+<b> Here are the books you have reviewed: <b>
 
 <ul>
   <% @user.reviews.each do |r| %>

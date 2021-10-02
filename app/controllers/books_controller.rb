@@ -11,15 +11,13 @@ class BooksController < ApplicationController
   end
 
   def create
-  
     @book = Book.new(book_params)
-
     if @book.save
       redirect_to book_path(@book)
     else
       # need this to render address field
       @book.build_genre
-      render new_book_path
+      render :new
     end
   end
 
@@ -37,10 +35,10 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find_by(id: params[:id])
-
     if @book.update(book_params)
       redirect_to book_path(@book)
     else
+      @book.build_genre
       render :edit
     end 
   end

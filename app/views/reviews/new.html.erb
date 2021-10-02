@@ -1,10 +1,12 @@
 <h2> Write a review </h2>
 
-<%= render partial: 'layouts/errors', locals: {object: @review} %>
-
 <% if @book %>
   <h2> Reviewing: <%= @book.title_and_author %></h2>
 <% end %>
+
+<%= render partial: 'layouts/errors', locals: {object: @review} %>
+
+
 
 <%= form_for @review do |f| %>
 

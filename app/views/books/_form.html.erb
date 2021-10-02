@@ -11,27 +11,32 @@
   </div>
 
   <br>
+
+  <div>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+
   <br>
 
-  <%= f.label :description %><br>
-  <%= f.text_area :description %>
+  <div>
+    <%= f.label :genre_id, "Select a pre-existing genre: " %>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "Select Genre" %>
+  <div> 
 
-  <br>
   <br>
   
-  <p> Select A Pre-existing Genre: </p>
-  <%= f.label :genre_id %>
-  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "Select Genre" %>
+  Or 
 
   <br>
   <br>
 
-  <p> Or create a new Genre: </p>
-
-  <%= f.fields_for :genre do |g| %>
-    <%= g.label :name %>
-    <%= g.text_field :name %>
-  <% end %>
+  <div>
+    <%= f.fields_for :genre do |g| %>
+      <%= g.label :name, "Create a new genre: " %>
+      <%= g.text_field :name %>
+    <% end %>
+  </div>
 
   <br>
   <br>

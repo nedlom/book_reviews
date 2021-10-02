@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def redirect_if_not_logged_in
     if !logged_in?
-      flash[:errors] = "Login or sign up to view website." 
+      flash[:alert] = "Login or sign up to view website." 
       redirect_to root_path
     end
   end

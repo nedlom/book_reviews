@@ -1,9 +1,6 @@
 <h1>Login</h1>
 
-<% flash.each do |name, msg| -%>
-  <%= content_tag :div, msg, class: name %>
-  <br>
-<% end %>
+<p><%= flash[:error] %></p>
 
 <%# using :user b/c not creating new user %>
 <%# this is a form for user model & fields are attr of model %>

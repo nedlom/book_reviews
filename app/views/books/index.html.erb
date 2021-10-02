@@ -1,24 +1,14 @@
 <h2> Book Index </h2>
 
-<% if @books.empty? %>
-
-  <b> There are currently no books in the index. </b>
-
-<% else %>
-
-  <ul>
-    <% @books.each do |b| %>
-      <li>
-        <b> <%= link_to b.title_and_author, book_path(b) %> </b>
-
-          <ul>
-            <li> <%= link_to "Write a review", new_book_review_path(b) %> </li> 
-            <li> <%= link_to "See all reviews for this book", book_reviews_path(b) %> </li>
-          </ul>
-
-      </li> <br>
-    <% end %>
-  </ul>
-
-<% end %>
-
+<ul>
+  <% @books.each do |b| %>
+    <li>
+      <b> <%= link_to b.title_and_author, book_path(b) %> </b>
+        <ul>
+          <li> <%= link_to "Write a review", new_book_review_path(b) %> </li> 
+          <li> <%= link_to "See all reviews for this book", book_reviews_path(b) %> </li>
+        </ul>
+    </li> 
+    <br>
+  <% end %>
+</ul>

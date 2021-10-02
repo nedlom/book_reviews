@@ -1,17 +1,12 @@
 <h1> Welcome To Book Reviews </h1>
 
-<% flash.each do |name, msg| -%>
-  <%= content_tag :div, msg, class: name %>
-<% end %>
+<p><%= flash[:alert] %></p>
 
-<br>
-
-<%= link_to "Login", login_path %>
-Or
-<%= link_to "Signup", signup_path %>
-Or
-<%= link_to 'Login with GitHub', '/auth/github', method: :post %>
-
+<ul>
+  <li> <%= link_to "Login", login_path %> </li>
+  <li> <%= link_to "Sign Up", signup_path %> </li>
+  <li> <%= link_to 'Login with GitHub', '/auth/github', method: :post %> </li>
+</ul>
 <%#= link_to "Log In with Google", '/auth/google_oauth2' %>
  
 
