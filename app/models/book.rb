@@ -15,9 +15,6 @@ class Book < ApplicationRecord
       errors.add(:book, 'is already in the book index.')
     end
   end
-  # avg rating
-  # Book.joins(:reviews).group(:id).order('avg(ratings) desc')
-  # scope -> {}
 
   def genre_attributes=(attributes)
     if !attributes[:name].empty?
