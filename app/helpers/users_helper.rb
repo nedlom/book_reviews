@@ -1,10 +1,10 @@
 module UsersHelper
 
-  def review_message
+  def user_reviews_message
     if current_user.reviews.empty?
-      content_tag(:b, "You have not reviewed any books")
+      content_tag(:b, "You have not posted any reviews")
     else
-      content_tag(:b, "Here are the books you have reviewed: ")
+      content_tag(:b, "Your reviews: ")
     end
   end
   
