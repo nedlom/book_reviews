@@ -9,7 +9,6 @@ class ReviewsController < ApplicationController
 
     # check if nested route has params[:book_id] and if the book exists
     if params[:book_id] && @book = Book.find_by(id: params[:book_id])
-
       @reviews = Review.ordered_reviews_for_a_book(@book)
     else
       @reviews = Review.newest
@@ -48,7 +47,7 @@ class ReviewsController < ApplicationController
   def edit
     @review = Review.find_by(id: params[:id])
 
-    if @review.nil? || !edit_permission?(@review)
+    if @review.nil? || !owner_permission?(@review)
       flash[:alert] = "You can only edit reviews that exist and were created by you"
       redirect_to user_path(current_user)
     end
@@ -65,13 +64,23 @@ class ReviewsController < ApplicationController
     end 
   end
 
+  def destroy
+    @review = Review.find_by(id: params[:id])
+
+    if owner_permission?(@review)
+      @review.destroy
+    end
+
+    redirect_to user_path(current_user)
+  end
+
   private
 
   def review_params
     params.require(:review).permit(:content, :rating, :book_id)
   end
 
-  def edit_permission?(review)
+  def owner_permission?(review)
     review.user == current_user
   end
 

@@ -14,3 +14,7 @@ Reviewed by user: <%= @review.user.username %>
 
 <%= link_to "Edit Review", edit_review_path(@review) if current_user == @review.user %>
 
+<br>
+
+<%= link_to "Delete Review", @review, method: :delete %>
+
