@@ -2,7 +2,7 @@
 
 <p><%= flash[:alert] %></p>
 
-<b> Here are the books you have reviewed: <b>
+<%= review_message %>
 
 <ul>
   <% @user.reviews.each do |r| %>
