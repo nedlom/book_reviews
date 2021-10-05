@@ -7,6 +7,10 @@ class GenresController < ApplicationController
 
   def show
     @genre = Genre.find_by(id: params[:id])
+
+    if @genre.nil?
+      redirect_to genres_path
+    end
   end
 
 end
