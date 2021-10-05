@@ -2,23 +2,26 @@ class ReviewsController < ApplicationController
   before_action :redirect_if_not_logged_in
 
   def index 
-    binding.pry
     # if params[:book]
-    #   book = Book.find_by(title: params[:book][:category_name]
-    #   ).id
-    
-    @reviews = Review.joins(:book).where(book_id: book)
-      # check if nested route has params[:book_id] and if the book exists
-    elsif params[:book_id] && @book = Book.find_by(id: params[:book_id])
+    #   book = Book.find_by(title: params[:book][:category_name]).id
+
+    # @reviews = Review.joins(:book).where(book_id: book)
+
+    # check if nested route has params[:book_id] and if the book exists
+
+    binding.pry
+    if params[:book_id] && @book = Book.find_by(id: params[:book_id])
+
       @reviews = Review.ordered_reviews_for_a_book(@book)
     else
-       @reviews = Review.newest
+      @reviews = Review.newest
     end
   end
 
   def new
     # checking for nested route
     @book = Book.find_by(id: params[:book_id])
+
     if !@book.nil?
       @review = @book.reviews.build
     else
@@ -47,7 +50,7 @@ class ReviewsController < ApplicationController
   def edit
     @review = Review.find_by(id: params[:id])
 
-    if !edit_permission?(@review)
+    if @review.nil? || !edit_permission?(@review)
       flash[:alert] = "You can only edit reviews that you created"
       redirect_to user_path(current_user)
     end
@@ -56,6 +59,7 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find_by(id: params[:id])
+
     if @review.update(review_params)
       redirect_to review_path(@review)
     else
