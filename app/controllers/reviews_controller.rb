@@ -2,14 +2,12 @@ class ReviewsController < ApplicationController
   before_action :redirect_if_not_logged_in
 
   def index 
+    # incorporate search bar for reviews
     # if params[:book]
     #   book = Book.find_by(title: params[:book][:category_name]).id
-
-    # @reviews = Review.joins(:book).where(book_id: book)
+    # end
 
     # check if nested route has params[:book_id] and if the book exists
-
-    binding.pry
     if params[:book_id] && @book = Book.find_by(id: params[:book_id])
 
       @reviews = Review.ordered_reviews_for_a_book(@book)
