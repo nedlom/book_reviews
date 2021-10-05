@@ -8,6 +8,8 @@ class ReviewsController < ApplicationController
     # end
 
     # check if nested route has params[:book_id] and if the book exists
+
+    binding.pry
     if params[:book_id] && @book = Book.find_by(id: params[:book_id])
       @reviews = Review.ordered_reviews_for_a_book(@book)
     else

@@ -30,4 +30,12 @@ module ReviewsHelper
     end
   end
 
+  def links_to_edit_and_delete
+    if current_user == @review.user
+      link_to("Edit Review", edit_review_path(@review)) +
+      tag('br') +
+      link_to("Delete Review", @review, method: :delete)
+    end
+  end
+
 end
