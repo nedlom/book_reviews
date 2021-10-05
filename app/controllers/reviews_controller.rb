@@ -49,7 +49,7 @@ class ReviewsController < ApplicationController
     @review = Review.find_by(id: params[:id])
 
     if @review.nil? || !edit_permission?(@review)
-      flash[:alert] = "You can only edit reviews that you created"
+      flash[:alert] = "You can only edit reviews that exist and were created by you"
       redirect_to user_path(current_user)
     end
 

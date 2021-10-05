@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      render :new, alert: "alert message"
+      render :new
     end
   end
 
@@ -21,7 +21,6 @@ class UsersController < ApplicationController
     if @user.nil? || @user != current_user
       redirect_to user_path(current_user)
     end
-    
   end
 
   private 
