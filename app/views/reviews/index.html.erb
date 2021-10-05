@@ -1,4 +1,31 @@
-<%= display_header_for_index %>
+<%= form_tag("/reviews", method: "get") do %>
+  <%= select_tag "book", options_from_collection_for_select(Book.all, "id", "title"), include_blank: true %>
+  <%= submit_tag "Filter" %>
+<% end %>
+
+<%= form_tag("/reviews", method: "get") do %>
+  <%= collection_select(:book, :book_id, Book.all, :id, :title, include_blank: true) %>
+  <%= submit_tag "Filter" %>
+<% end %>
+
+<!-- 
+<%= form_tag "/reviews", method: "get" do %>
+  <%= text_field_tag :book %>
+  <%= submit_tag "Filter" %>
+<% end %>
+-->
+
+<!--
+<%= form_tag "/reviews", method: "get" do %>
+  <%= text_field :book, :title, list: "books_autocomplete" %>
+    <datalist id="books_autocomplete">
+      <% Book.all.each do |book| %>
+        <option value="<%= book.title %>">
+      <% end %>
+    </datalist>
+    <%= submit_tag "submit" %>
+  <% end %>
+-->
 
 <ul>
   <% @reviews.each do |r| %>
